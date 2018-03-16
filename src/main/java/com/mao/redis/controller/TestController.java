@@ -34,7 +34,7 @@ public class TestController {
         u.setUd("12345678");
         u.setPhone("13785768767");
         //expireTime是过期时间   TimeUnit是设置过期时间是分还是秒还是小时
-        //redisUtils.set(u.getUd(),u,new Long((long)60), TimeUnit.SECONDS);
+        //redisUtils.set(u.getUd(),u,30L, TimeUnit.SECONDS);
         //redisUtils.set("person","对不起",new Long((long)30), TimeUnit.SECONDS);
         System.out.print(redisUtils.get("123"));
         System.out.print(redisUtils.get("456"));
