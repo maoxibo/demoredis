@@ -1,0 +1,507 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mao.redis.dao.UserMapper" >
+  <resultMap id="BaseResultMap" type="com.mao.redis.entry.User" >
+    <id column="ud" property="ud" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="headpic" property="headpic" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="emailpassword" property="emailpassword" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="start" property="start" jdbcType="INTEGER" />
+    <result column="addr" property="addr" jdbcType="VARCHAR" />
+    <result column="birthday" property="birthday" jdbcType="TIMESTAMP" />
+    <result column="shenfenzheng" property="shenfenzheng" jdbcType="VARCHAR" />
+    <result column="shenfenzhengimage" property="shenfenzhengimage" jdbcType="VARCHAR" />
+    <result column="yingyezhizhao" property="yingyezhizhao" jdbcType="VARCHAR" />
+    <result column="yingyezhizhaoimage" property="yingyezhizhaoimage" jdbcType="VARCHAR" />
+    <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="dianname" property="dianname" jdbcType="VARCHAR" />
+    <result column="openid" property="openid" jdbcType="VARCHAR" />
+    <result column="createud" property="createud" jdbcType="VARCHAR" />
+    <result column="yihangka" property="yihangka" jdbcType="VARCHAR" />
+    <result column="yinghangtype" property="yinghangtype" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="VARCHAR" />
+    <result column="isordershow" property="isordershow" jdbcType="INTEGER" />
+    <result column="isduanxinshow" property="isduanxinshow" jdbcType="INTEGER" />
+    <result column="duanxinshowcode" property="duanxinshowcode" jdbcType="VARCHAR" />
+    <result column="dunxinshowphone" property="dunxinshowphone" jdbcType="VARCHAR" />
+    <result column="duanxinshowmenage" property="duanxinshowmenage" jdbcType="VARCHAR" />
+    <result column="isvideoshow" property="isvideoshow" jdbcType="INTEGER" />
+    <result column="isvideoshowphone" property="isvideoshowphone" jdbcType="VARCHAR" />
+    <result column="isemailshow" property="isemailshow" jdbcType="INTEGER" />
+    <result column="weixin" property="weixin" jdbcType="VARCHAR" />
+    <result column="qq" property="qq" jdbcType="VARCHAR" />
+    <result column="city" property="city" jdbcType="VARCHAR" />
+    <result column="love" property="love" jdbcType="VARCHAR" />
+    <result column="wxCode" property="wxcode" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.mao.redis.entry.User" extends="BaseResultMap" >
+    <result column="tages" property="tages" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ud, phone, headpic, email, emailpassword, password, name, type, start, addr, birthday,
+    shenfenzheng, shenfenzhengimage, yingyezhizhao, yingyezhizhaoimage, createtime, dianname,
+    openid, createud, yihangka, yinghangtype, sex, isordershow, isduanxinshow, duanxinshowcode,
+    dunxinshowphone, duanxinshowmenage, isvideoshow, isvideoshowphone, isemailshow, weixin,
+    qq, city, love, wxCode
+  </sql>
+  <sql id="Blob_Column_List" >
+    tages
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from user
+    where ud = #{ud,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from user
+    where ud = #{ud,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.mao.redis.entry.User" >
+    insert into user (ud, phone, headpic,
+    email, emailpassword, password,
+    name, type, start,
+    addr, birthday, shenfenzheng,
+    shenfenzhengimage, yingyezhizhao, yingyezhizhaoimage,
+    createtime, dianname, openid,
+    createud, yihangka, yinghangtype,
+    sex, isordershow, isduanxinshow,
+    duanxinshowcode, dunxinshowphone, duanxinshowmenage,
+    isvideoshow, isvideoshowphone, isemailshow,
+    weixin, qq, city, love,
+    wxCode, tages)
+    values (#{ud,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{headpic,jdbcType=VARCHAR},
+    #{email,jdbcType=VARCHAR}, #{emailpassword,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},
+    #{name,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, #{start,jdbcType=INTEGER},
+    #{addr,jdbcType=VARCHAR}, #{birthday,jdbcType=TIMESTAMP}, #{shenfenzheng,jdbcType=VARCHAR},
+    #{shenfenzhengimage,jdbcType=VARCHAR}, #{yingyezhizhao,jdbcType=VARCHAR}, #{yingyezhizhaoimage,jdbcType=VARCHAR},
+    #{createtime,jdbcType=TIMESTAMP}, #{dianname,jdbcType=VARCHAR}, #{openid,jdbcType=VARCHAR},
+    #{createud,jdbcType=VARCHAR}, #{yihangka,jdbcType=VARCHAR}, #{yinghangtype,jdbcType=VARCHAR},
+    #{sex,jdbcType=VARCHAR}, #{isordershow,jdbcType=INTEGER}, #{isduanxinshow,jdbcType=INTEGER},
+    #{duanxinshowcode,jdbcType=VARCHAR}, #{dunxinshowphone,jdbcType=VARCHAR}, #{duanxinshowmenage,jdbcType=VARCHAR},
+    #{isvideoshow,jdbcType=INTEGER}, #{isvideoshowphone,jdbcType=VARCHAR}, #{isemailshow,jdbcType=INTEGER},
+    #{weixin,jdbcType=VARCHAR}, #{qq,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, #{love,jdbcType=VARCHAR},
+    #{wxcode,jdbcType=VARCHAR}, #{tages,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mao.redis.entry.User" >
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ud != null" >
+        ud,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="headpic != null" >
+        headpic,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="emailpassword != null" >
+        emailpassword,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="start != null" >
+        start,
+      </if>
+      <if test="addr != null" >
+        addr,
+      </if>
+      <if test="birthday != null" >
+        birthday,
+      </if>
+      <if test="shenfenzheng != null" >
+        shenfenzheng,
+      </if>
+      <if test="shenfenzhengimage != null" >
+        shenfenzhengimage,
+      </if>
+      <if test="yingyezhizhao != null" >
+        yingyezhizhao,
+      </if>
+      <if test="yingyezhizhaoimage != null" >
+        yingyezhizhaoimage,
+      </if>
+      <if test="createtime != null" >
+        createtime,
+      </if>
+      <if test="dianname != null" >
+        dianname,
+      </if>
+      <if test="openid != null" >
+        openid,
+      </if>
+      <if test="createud != null" >
+        createud,
+      </if>
+      <if test="yihangka != null" >
+        yihangka,
+      </if>
+      <if test="yinghangtype != null" >
+        yinghangtype,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="isordershow != null" >
+        isordershow,
+      </if>
+      <if test="isduanxinshow != null" >
+        isduanxinshow,
+      </if>
+      <if test="duanxinshowcode != null" >
+        duanxinshowcode,
+      </if>
+      <if test="dunxinshowphone != null" >
+        dunxinshowphone,
+      </if>
+      <if test="duanxinshowmenage != null" >
+        duanxinshowmenage,
+      </if>
+      <if test="isvideoshow != null" >
+        isvideoshow,
+      </if>
+      <if test="isvideoshowphone != null" >
+        isvideoshowphone,
+      </if>
+      <if test="isemailshow != null" >
+        isemailshow,
+      </if>
+      <if test="weixin != null" >
+        weixin,
+      </if>
+      <if test="qq != null" >
+        qq,
+      </if>
+      <if test="city != null" >
+        city,
+      </if>
+      <if test="love != null" >
+        love,
+      </if>
+      <if test="wxcode != null" >
+        wxCode,
+      </if>
+      <if test="tages != null" >
+        tages,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ud != null" >
+        #{ud,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="headpic != null" >
+        #{headpic,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="emailpassword != null" >
+        #{emailpassword,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="start != null" >
+        #{start,jdbcType=INTEGER},
+      </if>
+      <if test="addr != null" >
+        #{addr,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null" >
+        #{birthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="shenfenzheng != null" >
+        #{shenfenzheng,jdbcType=VARCHAR},
+      </if>
+      <if test="shenfenzhengimage != null" >
+        #{shenfenzhengimage,jdbcType=VARCHAR},
+      </if>
+      <if test="yingyezhizhao != null" >
+        #{yingyezhizhao,jdbcType=VARCHAR},
+      </if>
+      <if test="yingyezhizhaoimage != null" >
+        #{yingyezhizhaoimage,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dianname != null" >
+        #{dianname,jdbcType=VARCHAR},
+      </if>
+      <if test="openid != null" >
+        #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="createud != null" >
+        #{createud,jdbcType=VARCHAR},
+      </if>
+      <if test="yihangka != null" >
+        #{yihangka,jdbcType=VARCHAR},
+      </if>
+      <if test="yinghangtype != null" >
+        #{yinghangtype,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="isordershow != null" >
+        #{isordershow,jdbcType=INTEGER},
+      </if>
+      <if test="isduanxinshow != null" >
+        #{isduanxinshow,jdbcType=INTEGER},
+      </if>
+      <if test="duanxinshowcode != null" >
+        #{duanxinshowcode,jdbcType=VARCHAR},
+      </if>
+      <if test="dunxinshowphone != null" >
+        #{dunxinshowphone,jdbcType=VARCHAR},
+      </if>
+      <if test="duanxinshowmenage != null" >
+        #{duanxinshowmenage,jdbcType=VARCHAR},
+      </if>
+      <if test="isvideoshow != null" >
+        #{isvideoshow,jdbcType=INTEGER},
+      </if>
+      <if test="isvideoshowphone != null" >
+        #{isvideoshowphone,jdbcType=VARCHAR},
+      </if>
+      <if test="isemailshow != null" >
+        #{isemailshow,jdbcType=INTEGER},
+      </if>
+      <if test="weixin != null" >
+        #{weixin,jdbcType=VARCHAR},
+      </if>
+      <if test="qq != null" >
+        #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="love != null" >
+        #{love,jdbcType=VARCHAR},
+      </if>
+      <if test="wxcode != null" >
+        #{wxcode,jdbcType=VARCHAR},
+      </if>
+      <if test="tages != null" >
+        #{tages,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mao.redis.entry.User" >
+    update user
+    <set >
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="headpic != null" >
+        headpic = #{headpic,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="emailpassword != null" >
+        emailpassword = #{emailpassword,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="start != null" >
+        start = #{start,jdbcType=INTEGER},
+      </if>
+      <if test="addr != null" >
+        addr = #{addr,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null" >
+        birthday = #{birthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="shenfenzheng != null" >
+        shenfenzheng = #{shenfenzheng,jdbcType=VARCHAR},
+      </if>
+      <if test="shenfenzhengimage != null" >
+        shenfenzhengimage = #{shenfenzhengimage,jdbcType=VARCHAR},
+      </if>
+      <if test="yingyezhizhao != null" >
+        yingyezhizhao = #{yingyezhizhao,jdbcType=VARCHAR},
+      </if>
+      <if test="yingyezhizhaoimage != null" >
+        yingyezhizhaoimage = #{yingyezhizhaoimage,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dianname != null" >
+        dianname = #{dianname,jdbcType=VARCHAR},
+      </if>
+      <if test="openid != null" >
+        openid = #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="createud != null" >
+        createud = #{createud,jdbcType=VARCHAR},
+      </if>
+      <if test="yihangka != null" >
+        yihangka = #{yihangka,jdbcType=VARCHAR},
+      </if>
+      <if test="yinghangtype != null" >
+        yinghangtype = #{yinghangtype,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="isordershow != null" >
+        isordershow = #{isordershow,jdbcType=INTEGER},
+      </if>
+      <if test="isduanxinshow != null" >
+        isduanxinshow = #{isduanxinshow,jdbcType=INTEGER},
+      </if>
+      <if test="duanxinshowcode != null" >
+        duanxinshowcode = #{duanxinshowcode,jdbcType=VARCHAR},
+      </if>
+      <if test="dunxinshowphone != null" >
+        dunxinshowphone = #{dunxinshowphone,jdbcType=VARCHAR},
+      </if>
+      <if test="duanxinshowmenage != null" >
+        duanxinshowmenage = #{duanxinshowmenage,jdbcType=VARCHAR},
+      </if>
+      <if test="isvideoshow != null" >
+        isvideoshow = #{isvideoshow,jdbcType=INTEGER},
+      </if>
+      <if test="isvideoshowphone != null" >
+        isvideoshowphone = #{isvideoshowphone,jdbcType=VARCHAR},
+      </if>
+      <if test="isemailshow != null" >
+        isemailshow = #{isemailshow,jdbcType=INTEGER},
+      </if>
+      <if test="weixin != null" >
+        weixin = #{weixin,jdbcType=VARCHAR},
+      </if>
+      <if test="qq != null" >
+        qq = #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="love != null" >
+        love = #{love,jdbcType=VARCHAR},
+      </if>
+      <if test="wxcode != null" >
+        wxCode = #{wxcode,jdbcType=VARCHAR},
+      </if>
+      <if test="tages != null" >
+        tages = #{tages,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where ud = #{ud,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.mao.redis.entry.User" >
+    update user
+    set phone = #{phone,jdbcType=VARCHAR},
+    headpic = #{headpic,jdbcType=VARCHAR},
+    email = #{email,jdbcType=VARCHAR},
+    emailpassword = #{emailpassword,jdbcType=VARCHAR},
+    password = #{password,jdbcType=VARCHAR},
+    name = #{name,jdbcType=VARCHAR},
+    type = #{type,jdbcType=INTEGER},
+    start = #{start,jdbcType=INTEGER},
+    addr = #{addr,jdbcType=VARCHAR},
+    birthday = #{birthday,jdbcType=TIMESTAMP},
+    shenfenzheng = #{shenfenzheng,jdbcType=VARCHAR},
+    shenfenzhengimage = #{shenfenzhengimage,jdbcType=VARCHAR},
+    yingyezhizhao = #{yingyezhizhao,jdbcType=VARCHAR},
+    yingyezhizhaoimage = #{yingyezhizhaoimage,jdbcType=VARCHAR},
+    createtime = #{createtime,jdbcType=TIMESTAMP},
+    dianname = #{dianname,jdbcType=VARCHAR},
+    openid = #{openid,jdbcType=VARCHAR},
+    createud = #{createud,jdbcType=VARCHAR},
+    yihangka = #{yihangka,jdbcType=VARCHAR},
+    yinghangtype = #{yinghangtype,jdbcType=VARCHAR},
+    sex = #{sex,jdbcType=VARCHAR},
+    isordershow = #{isordershow,jdbcType=INTEGER},
+    isduanxinshow = #{isduanxinshow,jdbcType=INTEGER},
+    duanxinshowcode = #{duanxinshowcode,jdbcType=VARCHAR},
+    dunxinshowphone = #{dunxinshowphone,jdbcType=VARCHAR},
+    duanxinshowmenage = #{duanxinshowmenage,jdbcType=VARCHAR},
+    isvideoshow = #{isvideoshow,jdbcType=INTEGER},
+    isvideoshowphone = #{isvideoshowphone,jdbcType=VARCHAR},
+    isemailshow = #{isemailshow,jdbcType=INTEGER},
+    weixin = #{weixin,jdbcType=VARCHAR},
+    qq = #{qq,jdbcType=VARCHAR},
+    city = #{city,jdbcType=VARCHAR},
+    love = #{love,jdbcType=VARCHAR},
+    wxCode = #{wxcode,jdbcType=VARCHAR},
+    tages = #{tages,jdbcType=LONGVARCHAR}
+    where ud = #{ud,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mao.redis.entry.User" >
+    update user
+    set phone = #{phone,jdbcType=VARCHAR},
+    headpic = #{headpic,jdbcType=VARCHAR},
+    email = #{email,jdbcType=VARCHAR},
+    emailpassword = #{emailpassword,jdbcType=VARCHAR},
+    password = #{password,jdbcType=VARCHAR},
+    name = #{name,jdbcType=VARCHAR},
+    type = #{type,jdbcType=INTEGER},
+    start = #{start,jdbcType=INTEGER},
+    addr = #{addr,jdbcType=VARCHAR},
+    birthday = #{birthday,jdbcType=TIMESTAMP},
+    shenfenzheng = #{shenfenzheng,jdbcType=VARCHAR},
+    shenfenzhengimage = #{shenfenzhengimage,jdbcType=VARCHAR},
+    yingyezhizhao = #{yingyezhizhao,jdbcType=VARCHAR},
+    yingyezhizhaoimage = #{yingyezhizhaoimage,jdbcType=VARCHAR},
+    createtime = #{createtime,jdbcType=TIMESTAMP},
+    dianname = #{dianname,jdbcType=VARCHAR},
+    openid = #{openid,jdbcType=VARCHAR},
+    createud = #{createud,jdbcType=VARCHAR},
+    yihangka = #{yihangka,jdbcType=VARCHAR},
+    yinghangtype = #{yinghangtype,jdbcType=VARCHAR},
+    sex = #{sex,jdbcType=VARCHAR},
+    isordershow = #{isordershow,jdbcType=INTEGER},
+    isduanxinshow = #{isduanxinshow,jdbcType=INTEGER},
+    duanxinshowcode = #{duanxinshowcode,jdbcType=VARCHAR},
+    dunxinshowphone = #{dunxinshowphone,jdbcType=VARCHAR},
+    duanxinshowmenage = #{duanxinshowmenage,jdbcType=VARCHAR},
+    isvideoshow = #{isvideoshow,jdbcType=INTEGER},
+    isvideoshowphone = #{isvideoshowphone,jdbcType=VARCHAR},
+    isemailshow = #{isemailshow,jdbcType=INTEGER},
+    weixin = #{weixin,jdbcType=VARCHAR},
+    qq = #{qq,jdbcType=VARCHAR},
+    city = #{city,jdbcType=VARCHAR},
+    love = #{love,jdbcType=VARCHAR},
+    wxCode = #{wxcode,jdbcType=VARCHAR}
+    where ud = #{ud,jdbcType=VARCHAR}
+  </update>
+
+  <select id="search" resultMap="BaseResultMap">
+    select * FROM user
+  </select>
+</mapper>
