@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
@@ -27,6 +28,7 @@ public class TestController {
     @Autowired
     private UserService userService;
 
+    @ResponseBody
     @GetMapping(value="/test")
     public void test(){
         //redisUtils.set("456","I love you");
@@ -50,7 +52,8 @@ public class TestController {
 
     @GetMapping(value="index")
     public String index(){
-        System.out.print("hhhh");
+        System.out.print("烈火如歌");
+
         return "index";
     }
 }
