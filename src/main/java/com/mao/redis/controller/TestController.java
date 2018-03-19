@@ -4,6 +4,7 @@ import com.mao.redis.entry.User;
 import com.mao.redis.service.UserService;
 import com.mao.redis.util.RedisUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,7 +17,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * Created by x on 2018/3/15.
  */
-@RestController
+@Controller
 @RequestMapping("/testController")
 public class TestController {
 
@@ -44,6 +45,12 @@ public class TestController {
             User u1 = (User)it.next();
             System.out.println(u1.getName());
         }
+    }
 
+
+    @GetMapping(value="index")
+    public String index(){
+        System.out.print("hhhh");
+        return "index";
     }
 }
